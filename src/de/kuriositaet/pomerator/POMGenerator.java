@@ -79,7 +79,7 @@ public class POMGenerator {
 			"  <licenses>\n"+
 			"    <license>\n"+
 			"      <name>%7$s</name>\n"+
-			"      <url>%8$s/url>\n"+
+			"      <url>%8$s</url>\n"+
 			"    </license>\n"+
 			"  </licenses>\n"+
 			"  <scm>\n"+

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb924075-266a-425e-afe1-42caa77bcc6e" name="Default" comment="" />
+    <list default="true" id="cb924075-266a-425e-afe1-42caa77bcc6e" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java" afterPath="$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,7 +54,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="GPGSigner.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="GPGSigner.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/de/kuriositaet/pomerator/GPGSigner.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="165">
@@ -65,11 +67,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="POMGenerator.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="POMGenerator.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="840">
-                  <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+                <state relative-caret-position="300">
+                  <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -174,13 +176,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/FileCollector.java" />
-        <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java" />
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/JarGenerator.java" />
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/Stuff.java" />
         <option value="$PROJECT_DIR$/bootstrap.json" />
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/JavadocGenerator.java" />
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/ArtifactGenerator.java" />
         <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/GPGSigner.java" />
+        <option value="$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java" />
       </list>
     </option>
   </component>
@@ -626,16 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="23" lean-forward="false" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/kuriositaet/pomerator/Stuff.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -691,6 +683,16 @@
           <folding>
             <element signature="e#553#554#0" expanded="true" />
             <element signature="e#582#583#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/de/kuriositaet/pomerator/POMGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
