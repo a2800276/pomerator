@@ -1,4 +1,4 @@
-= Introduction
+# Introduction
 
 This is a (personal, non-production) tool to help me deal with
 generating and signing artifacts that are required to publish an
@@ -11,7 +11,7 @@ for sources, classes and javadoc and signs them using gpg (which must be
 available in the system PATH and the indicated key can't require a
 passphrase at the moment)
 
-= TODOs
+# TODOs
 
 - Figure out how to auotmatically upload to sonatype (or whatever)
   (Thinking out loud: it's probably easiest to reverse engineer this
@@ -21,6 +21,6 @@ passphrase at the moment)
   done from java
 - remove hardwired Unix assumptions (mainly path seperator I think)
 
-= License
+# License
 
 MIT
