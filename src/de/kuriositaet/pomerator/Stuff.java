@@ -1,5 +1,6 @@
 package de.kuriositaet.pomerator;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -23,7 +24,20 @@ public class Stuff {
 			//ProcessBuilder pb = new ProcessBuilder( cmd );
 			//pb.inheritIO();
 			//pb.start();
-			Runtime.getRuntime().exec( cmd ).waitFor();
+			long time = System.currentTimeMillis();
+			//Process proc = Runtime.getRuntime().exec( cmd );
+			ProcessBuilder pb = new ProcessBuilder(cmd);
+			pb.inheritIO();
+			p(pb.command());
+			p(System.getenv());
+			pb.directory( new File(".") );
+			p(pb.directory());
+			Process proc = pb.start();
+
+			int exit = proc.waitFor();
+			String finalCmd = String.join(" ", cmd);
+			time = System.currentTimeMillis() - time;
+			p(String.format("executed `%s` in %dms, returning: %d / %d", finalCmd, time, exit, proc.exitValue()));
 
 		} catch (IOException e) {
 			throw new RuntimeException( e );

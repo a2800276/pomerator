@@ -13,6 +13,7 @@ passphrase at the moment)
 
 # TODOs
 
+- Manifest (main)
 - Figure out how to auotmatically upload to sonatype (or whatever)
   (Thinking out loud: it's probably easiest to reverse engineer this
   from the ant task...) 

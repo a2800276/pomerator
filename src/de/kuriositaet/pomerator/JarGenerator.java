@@ -14,12 +14,13 @@ public class JarGenerator {
 		if (inputDirs.length < 1) {
 			throw new RuntimeException( "invalid argument, provide at least one directory" );
 		}
-		String [] jarCommand = {"jar", "cf", jarFn, "-C ", inputDirs[0], "."} ;
-		exec( jarCommand );
+		String [] jarCommand = {"/usr/bin/jar", "cvf", jarFn, "-C", inputDirs[0], "."} ;
+		//String jarCommand = "/usr/bin/jar cf " + jarFn + "-C" + inputDirs[0] + " .";
+		exec( jarCommand   );
 		if (inputDirs.length > 1) {
 			for (int i = 1; i!=inputDirs.length; ++i) {
-				jarCommand[1] = "uf";
-				jarCommand[4] = inputDirs[i];
+			//	jarCommand[1] = "uf";
+			//	jarCommand[4] = inputDirs[i];
 				exec(jarCommand);
 			}
 		}
