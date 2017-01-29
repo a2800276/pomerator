@@ -1,7 +1,7 @@
 [{
    "groupId"            : "de.kuriositaet"
   ,"artifactId"         : "pomerator"
-  ,"version"            : "0.0.1"
+  ,"version"            : "0.0.3"
   ,"projectName"        : "pomerator"
   ,"description"        : "attempt at making dealing with pom and maven central bearable"
   ,"url"                : "url"
@@ -12,7 +12,13 @@
   ,"developerEmail"     : "tim@kuriositaet.de"
   ,"developerURL"       : "http://www.kuriositaet.de"
   ,"developerId"        : "a2800276"
-  ,"depedencies"        : ""
+  ,"dependencies"       : [
+     {
+        "groupId"    : "de.kuriositaet"
+       ,"artifactId" : "utils"
+       ,"version"    : "[0.0.1,)"
+     }
+  ]
 
   ,"sources"            : ["src"]
   ,"classes"            : ["out/production/pomerator/"]

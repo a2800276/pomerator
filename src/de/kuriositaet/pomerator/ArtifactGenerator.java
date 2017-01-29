@@ -17,6 +17,7 @@ public class ArtifactGenerator {
 	final String[] sourceDirs;
 	Map<String, ?> cfg;
 	String outputDir;
+	String outputDirArtifacts;
 	String pomFn;
 	String sourceFn;
 	String classFn;
@@ -25,7 +26,8 @@ public class ArtifactGenerator {
 	public ArtifactGenerator(Map<String, ?> cfg) {
 		this.cfg = cfg;
 		this.outputDir = (String)cfg.get("output");
-		if (new File(this.outputDir).mkdirs());
+		this.outputDirArtifacts = String.format("%s/%s-%s", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
+		if (new File(this.outputDirArtifacts).mkdirs());
 		this.sourceDirs = list2arr((List<String>) this.cfg.get("sources") );
 		generateAllArtifacts();
 	}
@@ -36,6 +38,22 @@ public class ArtifactGenerator {
 		generateClassesJar();
 		generateJavadocJar();
 		signFiles();
+		generateBundle();
+	}
+
+	void generateBundle() {
+		String jarFn = String.format("%s/bundle-%s-%s.jar", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
+		JarGenerator.generateJarFromDirs(
+				jarFn,
+				this.outputDirArtifacts
+		);
+	}
+
+	static String base (String fn) {
+		return new File(fn).getName();
+	}
+	static String asc(String fn) {
+		return new File(String.format("%s.asc", fn)).getName();
 	}
 
 	void signFiles() {
@@ -47,30 +65,30 @@ public class ArtifactGenerator {
 	}
 
 	void generateJavadocJar() {
-		String javadocOut = String.format("%s/javadoc", outputDir);
+		String javadocOut = String.format("%s/javadoc", outputDirArtifacts);
 		JavadocGenerator.generateJavadoc( this.sourceDirs, javadocOut );
-		this.javadocFn = String.format("%s/%s-%s-javadoc.jar", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
-		JarGenerator.generateJar( this.javadocFn, javadocOut );
+		this.javadocFn = String.format("%s/%s-%s-javadoc.jar", this.outputDirArtifacts, cfg.get("artifactId"), cfg.get("version"));
+		JarGenerator.generateJarFromDirs( this.javadocFn, javadocOut );
 		JavadocGenerator.removeJavadocDir( javadocOut );
 	}
 
 	void generateClassesJar() {
-		this.classFn = String.format("%s/%s-%s.jar", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
+		this.classFn = String.format("%s/%s-%s.jar", this.outputDirArtifacts, cfg.get("artifactId"), cfg.get("version"));
 		String [] classDirs = list2arr( (List<String>) cfg.get("classes") );
-		JarGenerator.generateJar( this.classFn, classDirs);
+		JarGenerator.generateJarFromDirs( this.classFn, classDirs);
 	}
 
 
 	void generatePOM() {
-		this.pomFn = String.format("%s/%s-%s.pom", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
+		this.pomFn = String.format("%s/%s-%s.pom", this.outputDirArtifacts, cfg.get("artifactId"), cfg.get("version"));
 		POMGenerator.POMConfig cfg = new POMGenerator.POMConfig( (Map<String, String>) this.cfg );
 		POMGenerator.generatePOM( this.pomFn, cfg );
 	}
 
 	void generateSourceJar() {
-		this.sourceFn = String.format("%s/%s-%s-sources.jar", this.outputDir, cfg.get("artifactId"), cfg.get("version"));
+		this.sourceFn = String.format("%s/%s-%s-sources.jar", this.outputDirArtifacts, cfg.get("artifactId"), cfg.get("version"));
 
-		JarGenerator.generateJar( this.sourceFn, this.sourceDirs);
+		JarGenerator.generateJarFromDirs( this.sourceFn, this.sourceDirs);
 	}
 
 	public static void main (String [] args) {

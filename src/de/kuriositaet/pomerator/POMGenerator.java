@@ -3,7 +3,10 @@ package de.kuriositaet.pomerator;
 import util.io.IO;
 import util.json.JSON;
 
+import java.util.List;
 import java.util.Map;
+
+import static de.kuriositaet.pomerator.Stuff.obj2xml;
 
 /**
  * Created by a2800276 on 2017-01-25.
@@ -23,28 +26,31 @@ public class POMGenerator {
 		String developerName;
 		String developerURL;
 		String developerId;
-		String depedencies;
+		List dependencies;
 
 		POMConfig() {}
 		POMConfig(Map<String, String> m) {
 			this();
 			populate( m );
 		}
-		void populate(Map<String, String> m) {
-			groupId        = m.get("groupId");
-			artifactId     = m.get("artifactId");
-			version        = m.get("version");
-			projectName    = m.get("projectName");
-			description    = m.get("description");
-			url            = m.get("url");
-			licenseName    = m.get("licenseName");
-			licenseURL     = m.get("licenseURL");
-			scmURL         = m.get("scmURL");
-			developerEmail = m.get("developerEmail");
-			developerName  = m.get("developerName");
-			developerURL   = m.get("developerURL");
-			developerId    = m.get("developerId");
-			depedencies    = m.get("depedencies");
+		void populate(Map<String, ?> m) {
+			groupId        = get(m,"groupId");
+			artifactId     = get(m,"artifactId");
+			version        = get(m,"version");
+			projectName    = get(m,"projectName");
+			description    = get(m,"description");
+			url            = get(m,"url");
+			licenseName    = get(m,"licenseName");
+			licenseURL     = get(m,"licenseURL");
+			scmURL         = get(m,"scmURL");
+			developerEmail = get(m,"developerEmail");
+			developerName  = get(m,"developerName");
+			developerURL   = get(m,"developerURL");
+			developerId    = get(m,"developerId");
+			dependencies   = (List) m.get("dependencies");
+		}
+		static String get(Map<String, ?> m, String k) {
+			return (String)m.get(k);
 		}
 	}
 	// arg:
@@ -93,7 +99,9 @@ public class POMGenerator {
 			"      <id>%13$s</id>\n"+
 			"    </developer>\n"+
 			"  </developers>\n"+
-			"  %14$s\n"+
+			"  <dependencies>\n"+
+			"    %14$s\n"+
+			"  </dependencies>\n"+
 			"</project>\n";
 
 
@@ -127,7 +135,8 @@ public class POMGenerator {
 				cfg.developerName,
 				cfg.developerURL,
 				cfg.developerId,
-				cfg.depedencies
+				obj2xml(cfg.dependencies, 2 , "dependency").trim()
+
 		);
 
 		IO.writeAll(pom.getBytes(), fn);
